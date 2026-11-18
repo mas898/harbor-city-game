@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbor City: Sun, Salt &amp; Sirens</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="game-canvas"></canvas>
+
+<div id="hud" class="hidden">
+  <div id="hud-top-left">
+    <div id="health-row">
+      <span class="hud-label">Health</span>
+      <div id="health-bar"><div id="health-fill" class="fill"></div></div>
+      <span id="health-text">100</span>
+    </div>
+    <div id="cash-row"><span id="cash">$100</span><span id="district">Old Town</span></div>
+    <div id="stars" class="stars">☆☆☆☆☆</div>
+  </div>
+  <div id="hud-top-right">
+    <canvas id="minimap" width="220" height="165"></canvas>
+    <button id="btn-mute" type="button">Sound: on</button>
+  </div>
+  <div id="objective-box">
+    <span id="objective-label">Job</span>
+    <span id="objective-text">Free roam — explore Harbor City</span>
+  </div>
+  <div id="weapon-box">
+    <span id="weapon-name">Fists</span>
+    <span id="ammo">—</span>
+    <span id="speed"></span>
+  </div>
+  <div id="toast" class="hidden"></div>
+  <div id="bust-meter" class="hidden"><span>BUST</span><div class="bust-track"><div id="bust-fill"></div></div></div>
+  <div id="briefing" class="hidden">
+    <h2 id="briefing-title">A Job From Vera</h2>
+    <p id="briefing-giver">From Vera Sol</p>
+    <p id="briefing-text"></p>
+    <p id="briefing-reward"></p>
+    <button id="briefing-dismiss" type="button">Got it — drive (E)</button>
+  </div>
+  <div id="controls-hint">WASD move/drive · Mouse aim · Click shoot/punch · F punch · E enter/exit car · R reload · 1/2 weapons · Space handbrake · P pause · H help</div>
+</div>
+
+<div id="menu">
+  <div class="menu-card">
+    <p class="menu-kicker">A Harbor City story</p>
+    <h1>Harbor City<br><span>Sun, Salt &amp; Sirens</span></h1>
+    <p class="menu-story">Milo Kade drives courier vans for a living. Vera Sol has better-paying work — five jobs, one coastal city, and a police force that notices everything.</p>
+    <div class="menu-buttons">
+      <button id="btn-new" type="button" class="primary">New game</button>
+      <button id="btn-continue" type="button">Continue</button>
+      <button id="btn-help" type="button">How to play</button>
+    </div>
+    <div class="menu-controls">
+      <div><b>WASD / arrows</b> walk, run with Shift, drive with W/S + A/D</div>
+      <div><b>Mouse</b> aim · <b>Click</b> shoot or punch · <b>F</b> punch · <b>E</b> steal / exit car</div>
+      <div><b>R</b> reload · <b>1 / 2 / Q</b> weapons · <b>Space</b> handbrake · <b>P</b> pause · <b>H</b> help · <b>M</b> sound</div>
+    </div>
+    <p class="menu-foot">Steal cars, lose the police, finish all five jobs. Progress saves automatically.</p>
+  </div>
+</div>
+
+<div id="pause-menu" class="hidden">
+  <div class="menu-card small">
+    <h1>Paused</h1>
+    <p class="menu-story">Harbor City waits. Your progress is saved.</p>
+    <div class="menu-buttons">
+      <button id="btn-resume" type="button" class="primary">Resume</button>
+      <button id="btn-save" type="button">Save game</button>
+      <button id="btn-help-2" type="button">How to play</button>
+      <button id="btn-quit" type="button">Save &amp; title screen</button>
+    </div>
+  </div>
+</div>
+
+<div id="help-overlay" class="hidden">
+  <div class="menu-card">
+    <h1>How to play</h1>
+    <div class="help-grid">
+      <div><b>Walk / run</b><span>WASD or arrows, hold Shift to run</span></div>
+      <div><b>Drive</b><span>W accelerate, S brake / reverse, A/D steer, Space handbrake</span></div>
+      <div><b>Steal a car</b><span>Walk up to any car and press E; press E again to get out</span></div>
+      <div><b>Aim &amp; fight</b><span>Mouse aims, click shoots the pistol or throws a punch, F punches</span></div>
+      <div><b>Weapons</b><span>1 fists, 2 pistol, Q swap, R reload</span></div>
+      <div><b>Wanted level</b><span>Stars rise when you commit crimes. Break line of sight and hide until they fade — or get busted</span></div>
+      <div><b>Missions</b><span>Follow the gold beacon and the minimap marker; finish jobs for cash</span></div>
+      <div><b>Menus</b><span>P or Esc pauses, H shows this help, M toggles sound</span></div>
+    </div>
+    <div class="menu-buttons">
+      <button id="btn-close-help" type="button" class="primary">Back to the city</button>
+    </div>
+  </div>
+</div>
+
+<div id="end-screen" class="hidden">
+  <div class="menu-card small">
+    <h1 id="end-title">BUSTED</h1>
+    <p id="end-text" class="menu-story"></p>
+    <div class="menu-buttons">
+      <button id="btn-end" type="button" class="primary">Continue</button>
+    </div>
+  </div>
+</div>
+
+<pre id="selftest" class="hidden"></pre>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
